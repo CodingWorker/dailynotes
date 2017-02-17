@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试</title>
+</head>
+<body>
+
+
+<script>
+var arr= [
+        {name: 'root', 'hasSub': false},
+
+        {name: 'scroll', 'hasSub': false},
+        {name: '001', 'hasSub': false},
+        {name: '002', 'hasSub': false},
+        {name: '003', 'hasSub': false},
+        {name: '004', 'hasSub': false},
+        {name: 'subTitle', 'hasSub': false},
+        {name: '005', 'hasSub': false},
+        {name: '006', 'hasSub': false},
+        {name: '007', 'hasSub': false},
+        {name: '008', 'hasSub': false},
+        {name: '009', 'hasSub': false}
+
+	]
+var newArr=[];
+var temp=[];
+for (var i = 0; i < arr.length; i++) {
+	var anchor = arr[i];
+
+	if (/\d/.test(anchor['name'])) {
+	    temp.push(anchor);
+	}
+	else{
+		if (temp.length>0) {
+			var children={};
+			children.name=temp[0]['name'] +'-'+ temp[temp.length - 1]['name'];
+			children.hasSub=true;
+			children.children=[];
+			for(var j=0;j<temp.length;j++){
+				children.children.push(temp[j]);
+			}
+			newArr.push(children);
+			
+			temp.length = 0;
+		}
+	    
+	    newArr.push(anchor);
+	}
+}
+if (temp.length>0) {
+	var children={};
+	children.name=temp[0]['name'] +'-'+ temp[temp.length - 1]['name'];
+	children.hasSub=true;
+	children.children=[];
+	for(var j=0;j<temp.length;j++){
+		children.children.push(temp[j]);
+	}
+	newArr.push(children);
+}
+console.log(newArr);
+</script>
+</body>
+</html>
