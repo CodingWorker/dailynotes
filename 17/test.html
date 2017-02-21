@@ -24,6 +24,36 @@ var arr= [
 
 	]
 var newArr=[];
+while(arr.length>0){
+	if(/\d/.test(arr[0].name)){
+
+		if(typeof(newArr[newArr.length-1].children) == 'undefined'){
+			var temp={
+				name:arr[0].name,
+				hasSub:true,
+				children:[]
+			};
+			
+			newArr.push(temp);
+		}
+
+		newArr[newArr.length-1].children.push(arr.shift());
+	}else{
+		if(newArr.length!=0 && typeof(newArr[newArr.length-1].children) != 'undefined'){
+			newArr[newArr.length-1].name=newArr[newArr.length-1].name+'-'+newArr[newArr.length-1].children[newArr[newArr.length-1].children.length-1].name;
+		}
+
+		newArr.push(arr.shift());
+	}
+
+	if( arr.length==0 && typeof(newArr[newArr.length-1].children) != 'undefined'){
+		newArr[newArr.length-1].name=newArr[newArr.length-1].name+'-'+newArr[newArr.length-1].children[newArr[newArr.length-1].children.length-1].name;
+	}
+}
+
+console.log(newArr);
+
+/*
 var temp=[];
 for (var i = 0; i < arr.length; i++) {
 	var anchor = arr[i];
@@ -58,6 +88,7 @@ if (temp.length>0) {
 	}
 	newArr.push(children);
 }
+*/
 console.log(newArr);
 </script>
 </body>
