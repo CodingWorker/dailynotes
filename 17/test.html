@@ -23,6 +23,36 @@ var arr= [
         {name: '009', 'hasSub': false}
 
 	]
+
+//方法：
+var newArr=[];
+
+while(true){
+	var temp=arr.shift();
+	if (/\d/.test(temp['name'])) {
+		if(typeof(newArr[newArr.length-1].children)=='undefined'){
+			
+			newArr[newArr.length]={
+				name:1,
+				hasSub:true,
+				children:[]
+			}
+		}
+
+		(newArr[newArr.length-1].children).push(temp);
+	}else{
+		newArr.push(temp);
+	}
+
+	if(arr.length==0){
+		break;
+	}
+}
+
+
+
+/*
+   方法一：
 var newArr=[];
 var temp=[];
 for (var i = 0; i < arr.length; i++) {
@@ -58,6 +88,7 @@ if (temp.length>0) {
 	}
 	newArr.push(children);
 }
+*/
 console.log(newArr);
 </script>
 </body>
