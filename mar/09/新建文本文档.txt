@@ -1,0 +1,11 @@
+this.Request.QueryString[]
+
+
+与
+
+
+this.Request.Form
+
+
+
+能够获取的参数的地方不同
