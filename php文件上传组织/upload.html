@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>文件上传</title>
+</head>
+<body>
+<form method="post" action="http://localhost:1000/upload.php" enctype="multipart/form-data">
+<fieldset name='file1'>
+<input type="text" name="Name[]"><br />
+<input type="text" name="Type[]"><br />
+<input type="text" name="Desc[]"><br />
+<input type="file" name="file[]"><br />
+</fieldset>
+
+<fieldset name='file2'>
+<input type="text" name="Name[]"><br />
+<input type="text" name="Type[]"><br />
+<input type="text" name="Desc[]"><br />
+<input type="file" name="file[]"><br />
+</fieldset>
+
+
+<input type="submit" name="" value="submit">
+</form>
+</body>
+</html>
