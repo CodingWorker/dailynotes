@@ -6,7 +6,9 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-           ConnectionStringSettings c = System.Configuration.ConfigurationManager.ConnectionStrings["entityFramework"];
+            //ConnectionStrings
+            ConnectionStringSettings c = System.Configuration.ConfigurationManager.ConnectionStrings["entityFramework"];
+            string cStr = c.ConnectionString;
         }
     }
 }
