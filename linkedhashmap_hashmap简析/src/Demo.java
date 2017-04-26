@@ -20,7 +20,7 @@ public class Demo {
         }
         /**
          * 输出结果为：1 3 6
-         * 说明hashmap默认是按照key的升序排列的
+         * 实际上hashmap是按照hashcode来存储数据的。它的元素是没有顺序的，可能默认是按照键的hashcode的升序来排列的
          */
         //linkedhashmap实例
         Map<Integer,String> map2=new LinkedHashMap<>();
