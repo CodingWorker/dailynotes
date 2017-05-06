@@ -1,0 +1,85 @@
+task hellogradle <<{
+	println 'hello gradle'
+}
+
+task upper << {
+	String expString='this a test'
+	println 'Original: '+expString
+	println 'Upper case: '+expString.toUpperCase()
+}
+
+task count << {
+	4.times{
+		print "$it "
+	}
+}
+
+task groovyJDKMethod << {
+	String myName='groovy test'
+	myName.each(){
+		println "${it}"
+	}
+}
+
+task hello << {
+	println 'hello'
+}
+
+/*声明依赖于hello任务的新任务,类似于requireJS
+的模块加载，在执行完依赖任务后才会执行该任务*/
+task intro(dependsOn:hello) << {
+	println 'task@intro depends on task@hello'
+}
+
+/*添加的依赖任务可以不存在*/
+task intro2(dependsOn:'cc') << {
+	println 'task@intro2 depends on task@cc'
+}
+
+task cc << {
+	println 'this is task@cc'
+}
+
+task intro3 << {
+	println 'intro3 is called,it depends on task@intro2'
+}
+/*使用任务对象的属性来定义依赖*/
+intro3.dependsOn intro2
+
+
+task intro4 << {
+	print 'intro4 is called,it depends on task@helloxxx'
+}
+intro4.dependsOn{
+	tasks.findAll{
+		task->task.name.startsWith('hello')
+	}
+}
+
+task demo0 << {
+	description 'the description for demo0'
+	println 'task@demo0 is called'
+}
+
+task compile << {
+	println 'we are doing the compile'
+}
+
+compile.doFirst{
+	// Here you would put arbitrary conditions in real life.
+	// But this is used in an integration test so we want defined behavior.
+	if (true) { throw new StopExecutionException() }
+
+}
+
+task myTask << {
+	println 'this will not be affected'
+}
+
+myTask.dependsOn compile
+
+/*
+task hello2
+println hello2.name
+println project.hello2.name
+*/

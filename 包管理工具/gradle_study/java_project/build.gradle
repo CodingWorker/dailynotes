@@ -1,0 +1,17 @@
+/*添加java插件*/
+apply plugin: 'java'
+
+/*使用SourceSets项目结构而不是默认结构*/
+sourceSets{
+	main{
+		java{
+			srcDir 'src'
+		}
+	}
+
+	test{
+		java{
+			srcDir 'test'
+		}
+	}
+}
