@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+/*仓库配置*/
+repositories{
+	/*使用maven仓库中心作为依赖项下载源*/
+	mavenCentral()
+	/*或者定义一个本地的仓库
+	maven{
+		url:"http://repo.mycompany.com/maven2"
+	}
+	
+	*/
+}
+
+/*依赖项*/
+dependencies{
+	compile group:'org.hibernate',name:'hibernate-core',version:'3.6.7.Final'
+	testCompile group:'junit',name:'junit',version:'4.+'
+}

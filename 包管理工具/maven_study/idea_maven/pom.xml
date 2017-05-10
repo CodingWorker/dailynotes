@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--定义根元素project,引入maven的xml文档约束-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--当前POM版本-->
+    <modelVersion>4.0.0</modelVersion>
+    <!--类似包名-->
+    <groupId>com.test</groupId>
+    <!--类似包下的项目名-->
+    <artifactId>TestDemo</artifactId>
+
+    <version>1.0-SNAPSHOT</version>
+
+
+</project>
