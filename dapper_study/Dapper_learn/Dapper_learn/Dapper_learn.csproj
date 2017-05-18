@@ -36,6 +36,9 @@
     <Reference Include="Dapper">
       <HintPath>..\..\..\..\svn_molitv_server30\trunk\Server\packages\Dapper.1.50.2\lib\net40\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\adminDev\Binary\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />

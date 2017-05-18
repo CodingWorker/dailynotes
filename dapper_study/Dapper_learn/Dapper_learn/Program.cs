@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
 using System.Linq;
+using MySql;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Dapper_learn
 {
@@ -38,10 +41,10 @@ namespace Dapper_learn
             conn.Close();     //关闭连接
              */
             #endregion
-
             #region  use Dapper
             IDbConnection conn = new SqlConnection();
             conn.ConnectionString = System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"];
+     
             #region  查询
             //int cmdRet=conn.Execute("SELECT * FROM VideoType",null/*参数*/,null/*事务*/,null/*command TimeOut*/,CommandType.Text);    //执行一个只有简单返回值的命令，返回值表明命令执行是否成功,一般用在创建、删除和更新上。
             //Console.WriteLine(cmdRet);
@@ -91,17 +94,29 @@ namespace Dapper_learn
             */
             #endregion
 
+            /*
             #region  delete
-            VideoType vt = new VideoType() {
-                VideoTypeId= 1071635
+            VideoType vt = new VideoType()
+            {
+                VideoTypeId = 1071635
             };
-            int ret=conn.Execute("DELETE FROM VideoType WHERE VideoTypeId=@VideoTypeId",vt);    //0表示失败，1表明执行成功
+            int ret = conn.Execute("DELETE FROM VideoType WHERE VideoTypeId=@VideoTypeId", vt);    //0表示失败，1表明执行成功
             Console.ReadKey();
 
             #endregion
 
+      */
             conn.Close();
             #endregion
+ 
+            string mysqlConnString = System.Configuration.ConfigurationSettings.AppSettings["MySQL_ConnectionString"];
+            using (IDbConnection mysqlConn = new MySqlConnection(mysqlConnString))
+            {
+                string sql = "SELECT * FROM meta_data;";
+                List<MetaData> metadatas = mysqlConn.Query<MetaData>(sql).ToList();
+            }
+
+
         }
 
         private sealed class VideoType    //此实体必须与数据库的表字段一致
@@ -109,6 +124,19 @@ namespace Dapper_learn
             public int? VideoTypeId { get; set; }
             public int? VideoId { get; set; }
             public string Type { get; set; }
+        }
+
+        private sealed class MetaData
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Url { get; set; }
+            public DateTime TimeCreated { get; set; }
+            public DateTime TimeModified { get; set; }
+            public string Desc { get; set; }
+            public string Author { get; set; }
+            public int TypeId { get; set; }
+
         }
     }
 }
