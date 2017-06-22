@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PluginDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/PluginDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PluginDemo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/PluginDemo_main.iml" group="PluginDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PluginDemo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/PluginDemo_test.iml" group="PluginDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/src/main.iml" filepath="$PROJECT_DIR$/.idea/modules/src/main.iml" group="main" />
+    </modules>
+  </component>
+</project>

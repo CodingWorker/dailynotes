@@ -1,0 +1,76 @@
+task helloWorld << {
+	print 'hello world!';
+}
+
+task copyFile(type:Copy){
+	from 'f:/temp.txt'
+	into 'f:/temp.txt.bak'
+}
+
+task before <<{
+	print 'before\r\n'
+}
+
+task after(dependsOn:before) <<{
+	print 'after'
+}
+
+task hello1 <<{
+	print 'hello1'
+}
+
+task hello2{
+	doLast{
+		print 'hello2'
+	}
+}
+
+task hello3{
+	doFirst{
+		print 'hello3'
+	}
+}
+
+task showTasks{
+	println tasks.class
+	println tasks.size()
+}
+
+tasks.create(name:'hello4'){
+	println 'hello4'
+}
+
+task hello5(dependsOn:hello4){
+	println 'hello5'
+}
+
+task hello6{
+	println 'hello6'
+}
+
+hello6.dependsOn hello5,hello3
+
+task hello7 {
+	description='hello7'
+	println description
+}
+
+task hello8{
+	println description
+}
+
+hello8{
+	description='this is hello8'
+}
+
+task hello9{
+	println description
+}
+
+hello9.configure{
+	description 'this is hello9'
+}
+
+
+
+
